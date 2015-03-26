@@ -4,6 +4,8 @@
 #include <Adafruit_BMP085_U.h>
 #include <Adafruit_L3GD20_U.h>
 #include <Adafruit_10DOF.h>
+#include <Adafruit_HTU21DF.h>
+// #include <Adafruit_GPS.h> TODO fix issue with software serial library
 
 //Assign IDs to the sensors
 Adafruit_10DOF                dof   = Adafruit_10DOF();
@@ -11,8 +13,10 @@ Adafruit_LSM303_Accel_Unified accel = Adafruit_LSM303_Accel_Unified(30301);
 Adafruit_LSM303_Mag_Unified   mag   = Adafruit_LSM303_Mag_Unified(30302);
 Adafruit_BMP085_Unified       bmp   = Adafruit_BMP085_Unified(18001);
 
+float seaLevelPressure = 1015;
+
 void setup() {
-  initSensors();
+  Serial.begin(9600);
 }
 
 void loop() {
