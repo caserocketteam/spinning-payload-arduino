@@ -21,11 +21,13 @@ Adafruit_10DOF                dof   = Adafruit_10DOF();
 Adafruit_LSM303_Accel_Unified accel = Adafruit_LSM303_Accel_Unified(30301);
 Adafruit_LSM303_Mag_Unified   mag   = Adafruit_LSM303_Mag_Unified(30302);
 Adafruit_BMP085_Unified       bmp   = Adafruit_BMP085_Unified(18001);
+Adafruit_HTU21DF              htu   = Adafruit_HTU21DF();
 
 float seaLevelPressure = 1015;
 
 void setup() {
   Serial.begin(9600);
+  htu.begin();
   GPS.sendCommand(PMTK_SET_NMEA_OUTPUT_RMCGGA);
   GPS.sendCommand(PMTK_SET_NMEA_UPDATE_1HZ);
   GPS.sendCommand(PMTK_API_SET_FIX_CTL_1HZ);
@@ -93,6 +95,8 @@ void loop() {
     Serial.print(F("Temp: "));
     Serial.print(temperature);
     Serial.println(F(""));
+    Serial.print(F("Hum: "));
+    Serial.println(htu.readHumidity());
   }
   
   delay(100);
