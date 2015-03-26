@@ -6,7 +6,7 @@
 #include <Adafruit_10DOF.h>
 #include <Adafruit_HTU21DF.h>
 #include <SoftwareSerial.h>
-#include <Adafruit_GPS.h> TODO fix issue with software serial library
+#include <Adafruit_GPS.h>
 
 //Assign IDs to the sensors
 Adafruit_10DOF                dof   = Adafruit_10DOF();
